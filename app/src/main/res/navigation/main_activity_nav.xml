@@ -12,7 +12,11 @@
         tools:layout="@layout/fragment_search" >
         <action
             android:id="@+id/detailTransition"
-            app:destination="@id/detailFragment" />
+            app:destination="@id/detailFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/detailFragment"
@@ -21,6 +25,6 @@
         tools:layout="@layout/fragment_detail" >
         <argument
             android:name="movie"
-            app:argType="com.example.movieapp.data.entity.Movies" />
+            app:argType="string" />
     </fragment>
 </navigation>

@@ -1,88 +1,130 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.fragment.DetailFragment">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbarDetail"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <data>
+        <variable
+            name="movieDetailObject"
+            type="com.example.movieapp.data.entity.MovieDetail" />
+    </data>
 
-    <ImageView
-        android:id="@+id/imageViewDetailPoster"
-        android:layout_width="160dp"
-        android:layout_height="220dp"
-        android:layout_marginTop="16dp"
-        android:src="@drawable/starwars"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbarDetail" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/textViewDetailGenre"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Action, Adventure, Fantasy"
-        app:layout_constraintBottom_toTopOf="@+id/textViewDetailYear"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewDetailPoster" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".ui.fragment.DetailFragment">
 
-    <TextView
-        android:id="@+id/textViewDetailYear"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="1977"
-        app:layout_constraintBottom_toTopOf="@+id/textViewDetailRuntime"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewDetailGenre" />
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbarDetail"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="?attr/colorPrimary"
+                android:minHeight="?attr/actionBarSize"
+                android:theme="?attr/actionBarTheme"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:title="@{movieDetailObject.movieTitle}" />
 
-    <TextView
-        android:id="@+id/textViewDetailRuntime"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="121 min"
-        app:layout_constraintBottom_toTopOf="@+id/textViewDetailLanguage"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewDetailYear" />
+            <ImageView
+                android:id="@+id/imageViewDetailPoster"
+                android:layout_width="250dp"
+                android:layout_height="300dp"
+                android:layout_marginTop="16dp"
+                tools:src="@drawable/ic_launcher_background"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/toolbarDetail" />
 
-    <TextView
-        android:id="@+id/textViewDetailLanguage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="English"
-        app:layout_constraintBottom_toTopOf="@+id/textViewDetailPlot"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewDetailRuntime" />
+            <TextView
+                android:id="@+id/textViewDetailGenre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
+                android:fontFamily="@font/bebas_neue"
+                android:text='@{"Genre: "+movieDetailObject.movieGenre}'
+                tools:text="MovieGenre"
+                android:textAlignment="center"
+                android:textColor="@color/textColor"
+                android:textSize="24sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageViewDetailPoster" />
 
-    <TextView
-        android:id="@+id/textViewDetailPlot"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:text="Luke Skywalker joins forces with a Jedi Knight, a cocky pilot, a Wookiee and two droids to save the galaxy from the Empire's world-destroying battle station, while also attempting to rescue Princess Leia from the mysterious Darth ..."
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewDetailLanguage" />
+            <TextView
+                android:id="@+id/textViewDetailYear"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/bebas_neue"
+                android:text='@{"Year: "+movieDetailObject.movieYear}'
+                android:textAlignment="center"
+                android:textColor="@color/textColor"
+                android:textSize="24sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/textViewDetailRuntime"
+                app:layout_constraintTop_toBottomOf="@+id/textViewDetailLanguage" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/textViewDetailRuntime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/bebas_neue"
+                android:text='@{"Runtime: "+movieDetailObject.movieRuntime}'
+                android:textAlignment="center"
+                android:textColor="@color/textColor"
+                android:textSize="24sp"
+                app:layout_constraintEnd_toStartOf="@+id/textViewDetailYear"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewDetailLanguage" />
+
+            <TextView
+                android:id="@+id/textViewDetailLanguage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
+                android:fontFamily="@font/bebas_neue"
+                android:text='@{"Language: "+movieDetailObject.movieLanguage}'
+                android:textAlignment="center"
+                android:textColor="@color/textColor"
+                android:textSize="24sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewDetailGenre" />
+
+            <TextView
+                android:id="@+id/textViewDetailPlot"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
+                android:fontFamily="@font/bebas_neue"
+                android:text="@{movieDetailObject.moviePlot}"
+                android:textColor="@color/textColor"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewDetailYear" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>
